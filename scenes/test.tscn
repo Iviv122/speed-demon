@@ -7,7 +7,15 @@
 [ext_resource type="Script" uid="uid://wkuhl2e5xc" path="res://objects/camera/cam_follow.gd" id="4_j5jx5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bl13t"]
-radius = 62.968246
+radius = 63.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5jx5"]
+size = Vector2(760, 612)
+
+[sub_resource type="Gradient" id="Gradient_j5jx5"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lpvoh"]
+gradient = SubResource("Gradient_j5jx5")
 
 [node name="Node2D" type="Node2D" unique_id=2144967713]
 
@@ -18,23 +26,22 @@ texture = ExtResource("2_bl13t")
 region_enabled = true
 region_rect = Rect2(0, 0, 2560, 2560)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1721498200]
-motion_mode = 1
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1535173521]
 script = ExtResource("2_iyx0m")
 speed = 1000.0
 metadata/_custom_type_script = "uid://c722fksxqbexu"
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1958564198]
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1958564198]
 texture = ExtResource("1_errlg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1955734930]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1955734930]
 shape = SubResource("CircleShape2D_bl13t")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1639635233 node_paths=PackedStringArray("target")]
 zoom = Vector2(0.4, 0.4)
 position_smoothing_enabled = true
 script = ExtResource("4_j5jx5")
-target = NodePath("../CharacterBody2D")
+target = NodePath("../Player")
 metadata/_custom_type_script = "uid://wkuhl2e5xc"
 
 [node name="FPScounter" type="Label" parent="." unique_id=1381116333]
@@ -42,3 +49,13 @@ offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("4_74lek")
 metadata/_custom_type_script = "uid://b0cu5aqopu7qr"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1018393007]
+position = Vector2(59, -563)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=351970455]
+shape = SubResource("RectangleShape2D_j5jx5")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=970807906]
+scale = Vector2(11.875, 9.5625)
+texture = SubResource("GradientTexture2D_lpvoh")
