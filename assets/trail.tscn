@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dicbos1j4vw7u"]
+
+[ext_resource type="Texture2D" uid="uid://7xnf8qmw05b7" path="res://raw_assets/sprites/square.png" id="1_1ydho"]
+
+[sub_resource type="Curve" id="Curve_1ydho"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_btfx8"]
+curve = SubResource("Curve_1ydho")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_btfx8"]
+gravity = Vector3(0, 0, 0)
+scale_min = 0.29999998
+scale_max = 0.29999998
+scale_curve = SubResource("CurveTexture_btfx8")
+
+[node name="Trail" type="GPUParticles2D" unique_id=379838340]
+amount = 24
+texture = ExtResource("1_1ydho")
+lifetime = 0.7
+process_material = SubResource("ParticleProcessMaterial_btfx8")

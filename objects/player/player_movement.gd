@@ -4,27 +4,41 @@ class_name CharacterMovement
 @export var speed : float = 450 
 @export var player_radius : float = 63
 
+signal died()
 
 var direction : Vector2 = Vector2(0,0)
 var pressed : bool = false
+
+
 var line : Line2D
 
 func _ready():
 	Engine.time_scale = 1
 
 func _input(event):
-	if event.is_action_pressed('m1'):
+
+	if event.is_action_pressed('m1') && !pressed:
+		start_slowmo()
 		pressed = true
-		Engine.time_scale = 0.3
 
-	if event.is_action_released("m1"):
-		direction = (get_global_mouse_position() - global_position).normalized()
+	if event.is_action_released("m1") && pressed:
+		redirect()
 		pressed = false
-		Engine.time_scale = 1
+		end_slowmo()
 
+
+func redirect() -> void:
+	direction = (get_global_mouse_position() - global_position).normalized()
+
+func start_slowmo() -> void:
+	Engine.time_scale = 0.3
+
+func end_slowmo() -> void:
+	Engine.time_scale = 1
 
 func die() -> void:
-	Engine.time_scale = 1
+	end_slowmo()
+	died.emit()
 
 func is_collide() -> void:
 	var space_state = get_world_2d().direct_space_state
@@ -68,26 +82,25 @@ func _physics_process(_delta: float) -> void:
 	is_collide()
 	velocity = direction*speed
 	move_and_slide()
-	queue_redraw()
 		
-func _draw():
-	var ray_length = player_radius*1.1
-	var dir = direction.normalized()
+#func _draw():
+#	var ray_length = player_radius*1.1
+#	var dir = direction.normalized()
 
-	var perp = Vector2(-dir.y, dir.x)
+#	var perp = Vector2(-dir.y, dir.x)
 
-	draw_line(
-		Vector2.ZERO,
-		dir * ray_length,
-		Color.RED
-	)
-	draw_line(
-		Vector2.ZERO + perp * player_radius,
-		Vector2.ZERO + perp * player_radius + dir * ray_length,
-		Color.BLACK
-	)
-	draw_line(
-		Vector2.ZERO - perp * player_radius,
-		Vector2.ZERO - perp * player_radius + dir * ray_length,
-		Color.PURPLE
-	)
+#	draw_line(
+#		Vector2.ZERO,
+#		dir * ray_length,
+#		Color.RED
+#	)
+#	draw_line(
+#		Vector2.ZERO + perp * player_radius,
+#		Vector2.ZERO + perp * player_radius + dir * ray_length,
+#		Color.BLACK
+#	)
+#	draw_line(
+#		Vector2.ZERO - perp * player_radius,
+#		Vector2.ZERO - perp * player_radius + dir * ray_length,
+#		Color.PURPLE
+#	)

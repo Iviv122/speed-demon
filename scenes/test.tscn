@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c722fksxqbexu" path="res://objects/player/player_movement.gd" id="2_iyx0m"]
 [ext_resource type="Script" uid="uid://b0cu5aqopu7qr" path="res://objects/ui/fpscounter.gd" id="4_74lek"]
 [ext_resource type="Script" uid="uid://wkuhl2e5xc" path="res://objects/camera/cam_follow.gd" id="4_j5jx5"]
+[ext_resource type="PackedScene" uid="uid://dicbos1j4vw7u" path="res://assets/trail.tscn" id="4_lpvoh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bl13t"]
 radius = 63.0
@@ -30,6 +31,8 @@ region_rect = Rect2(0, 0, 2560, 2560)
 script = ExtResource("2_iyx0m")
 speed = 1000.0
 metadata/_custom_type_script = "uid://c722fksxqbexu"
+
+[node name="Trail" parent="Player" unique_id=379838340 instance=ExtResource("4_lpvoh")]
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1958564198]
 texture = ExtResource("1_errlg")
@@ -59,3 +62,7 @@ shape = SubResource("RectangleShape2D_j5jx5")
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=970807906]
 scale = Vector2(11.875, 9.5625)
 texture = SubResource("GradientTexture2D_lpvoh")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=243650465]
+offset_right = 40.0
+offset_bottom = 40.0
