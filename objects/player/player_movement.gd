@@ -74,7 +74,6 @@ func _draw():
 	var ray_length = player_radius*1.1
 	var dir = direction.normalized()
 
-	# perpendicular vector
 	var perp = Vector2(-dir.y, dir.x)
 
 	draw_line(
