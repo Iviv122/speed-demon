@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://dw4snnhawdl8e"]
 
-[ext_resource type="PackedScene" uid="uid://ca3sm2qpox730" path="res://assets/player.tscn" id="2_74lek"]
+[ext_resource type="PackedScene" uid="uid://c1qrg67y0nrcu" path="res://assets/player.tscn" id="2_74lek"]
 [ext_resource type="Texture2D" uid="uid://b4il8cwkkmdf6" path="res://raw_assets/sprites/tilefloor.png" id="2_bl13t"]
-[ext_resource type="Script" uid="uid://b0cu5aqopu7qr" path="res://objects/ui/fpscounter.gd" id="4_74lek"]
 [ext_resource type="Script" uid="uid://wkuhl2e5xc" path="res://objects/camera/cam_follow.gd" id="4_j5jx5"]
+[ext_resource type="Script" uid="uid://byubysdv4evlm" path="res://objects/enemy/enemy.gd" id="5_at5dv"]
 [ext_resource type="PackedScene" uid="uid://c4iesjw2jgk87" path="res://assets/collide_effect.tscn" id="5_j5jx5"]
+[ext_resource type="Texture2D" uid="uid://7xnf8qmw05b7" path="res://raw_assets/sprites/square.png" id="5_lpvoh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5jx5"]
 size = Vector2(760, 612)
@@ -15,6 +16,24 @@ colors = PackedColorArray(0.18717614, 0.18717614, 0.18717614, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lpvoh"]
 gradient = SubResource("Gradient_j5jx5")
+
+[sub_resource type="Gradient" id="Gradient_lpvoh"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.6325301)
+colors = PackedColorArray(0.18416114, 0.18416114, 0.18416114, 1, 0.18431373, 0.18431373, 0.18431373, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_at5dv"]
+gradient = SubResource("Gradient_lpvoh")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j5jx5"]
+radius = 114.00439
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpvoh"]
+size = Vector2(256, 256)
 
 [node name="Node2D" type="Node2D" unique_id=2144967713]
 
@@ -34,12 +53,6 @@ position_smoothing_enabled = true
 script = ExtResource("4_j5jx5")
 target = NodePath("../Player")
 metadata/_custom_type_script = "uid://wkuhl2e5xc"
-
-[node name="FPScounter" type="Label" parent="." unique_id=1381116333]
-offset_right = 40.0
-offset_bottom = 23.0
-script = ExtResource("4_74lek")
-metadata/_custom_type_script = "uid://b0cu5aqopu7qr"
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=732794801]
 position = Vector2(-410, 571)
@@ -70,3 +83,34 @@ position = Vector2(-2996, 397)
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=243650465]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=195287838]
+position = Vector2(474, 176)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=126563051]
+texture = SubResource("GradientTexture2D_at5dv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=563754545]
+shape = SubResource("CircleShape2D_j5jx5")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="." unique_id=530428798]
+position = Vector2(-1194, -42)
+script = ExtResource("5_at5dv")
+metadata/_custom_type_script = "uid://byubysdv4evlm"
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D5" unique_id=413416687]
+texture = ExtResource("5_lpvoh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5" unique_id=654941554]
+shape = SubResource("RectangleShape2D_lpvoh")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=141064566]
+position = Vector2(-776, -345)
+script = ExtResource("5_at5dv")
+metadata/_custom_type_script = "uid://byubysdv4evlm"
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4" unique_id=389391635]
+texture = ExtResource("5_lpvoh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=537048152]
+shape = SubResource("RectangleShape2D_lpvoh")

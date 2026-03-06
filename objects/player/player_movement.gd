@@ -47,7 +47,7 @@ func turn_on() -> void:
 		t.kill()
 
 	t = get_tree().create_tween()
-	t.tween_property(camera,"zoom",speed_cam_zoom,zoom_speed)
+	t.tween_property(camera,"zoom",speed_cam_zoom,zoom_speed).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 
 	start.emit()
 	Engine.time_scale = 0.3
@@ -58,7 +58,7 @@ func turn_off() -> void:
 		t.kill()
 
 	t = get_tree().create_tween()
-	t.tween_property(camera,"zoom",cam_zoom,zoom_speed)
+	t.tween_property(camera,"zoom",cam_zoom,zoom_speed).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 
 
 	ended.emit()
@@ -96,12 +96,25 @@ func is_collide() -> void:
 
 	if result:
 		direction = direction.bounce(result.normal)
+		
+		if result.collider is Enemy:
+			result.collider.die()
+
 		spawn_effect(result.position)
 	elif result_left:
 		direction = direction.bounce(result_left.normal)
+
+		if result_left.collider is Enemy:
+			result_left.collider.die()
+
 		spawn_effect(result_left.position)
 	elif result_right:
 		direction = direction.bounce(result_right.normal)
+
+		if result_right.collider is Enemy:
+			result_right.collider.die()
+
+
 		spawn_effect(result_right.position)
 
 

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ca3sm2qpox730"]
+[gd_scene format=3 uid="uid://c1qrg67y0nrcu"]
 
 [ext_resource type="Script" uid="uid://c722fksxqbexu" path="res://objects/player/player_movement.gd" id="1_insbl"]
 [ext_resource type="PackedScene" uid="uid://dicbos1j4vw7u" path="res://assets/trail.tscn" id="2_rug40"]
@@ -17,6 +17,8 @@ shader_parameter/y_speed = 0.0
 radius = 63.0
 
 [node name="Player" type="CharacterBody2D" unique_id=660741308]
+position = Vector2(1, 0)
+floor_max_angle = 0.0
 script = ExtResource("1_insbl")
 speed = 1500.0
 collide_effect = ExtResource("2_yceh7")
