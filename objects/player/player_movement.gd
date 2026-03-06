@@ -4,6 +4,11 @@ class_name CharacterMovement
 @export var speed : float = 450 
 @export var player_radius : float = 63
 @export var collide_effect : PackedScene
+@export var camera : Camera2D
+
+@export var cam_zoom : Vector2
+@export var speed_cam_zoom : Vector2
+@export var zoom_speed : float = 0.4
 
 signal died()
 
@@ -12,6 +17,8 @@ signal ended()
 
 var direction : Vector2 = Vector2(0,0)
 var pressed : bool = false
+
+var t : Tween
 
 func _ready():
 	Engine.time_scale = 1
@@ -35,10 +42,25 @@ func die() -> void:
 	died.emit()
 
 func turn_on() -> void:
+
+	if t:
+		t.kill()
+
+	t = get_tree().create_tween()
+	t.tween_property(camera,"zoom",speed_cam_zoom,zoom_speed)
+
 	start.emit()
 	Engine.time_scale = 0.3
 
 func turn_off() -> void:
+
+	if t:
+		t.kill()
+
+	t = get_tree().create_tween()
+	t.tween_property(camera,"zoom",cam_zoom,zoom_speed)
+
+
 	ended.emit()
 	Engine.time_scale = 1
 

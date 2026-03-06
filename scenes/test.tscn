@@ -4,11 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://b4il8cwkkmdf6" path="res://raw_assets/sprites/tilefloor.png" id="2_bl13t"]
 [ext_resource type="Script" uid="uid://b0cu5aqopu7qr" path="res://objects/ui/fpscounter.gd" id="4_74lek"]
 [ext_resource type="Script" uid="uid://wkuhl2e5xc" path="res://objects/camera/cam_follow.gd" id="4_j5jx5"]
+[ext_resource type="PackedScene" uid="uid://c4iesjw2jgk87" path="res://assets/collide_effect.tscn" id="5_j5jx5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5jx5"]
 size = Vector2(760, 612)
 
 [sub_resource type="Gradient" id="Gradient_j5jx5"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.18717614, 0.18717614, 0.18717614, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lpvoh"]
 gradient = SubResource("Gradient_j5jx5")
@@ -22,7 +25,8 @@ texture = ExtResource("2_bl13t")
 region_enabled = true
 region_rect = Rect2(0, 0, 2560, 2560)
 
-[node name="Player" parent="." unique_id=660741308 instance=ExtResource("2_74lek")]
+[node name="Player" parent="." unique_id=660741308 node_paths=PackedStringArray("camera") instance=ExtResource("2_74lek")]
+camera = NodePath("../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1639635233 node_paths=PackedStringArray("target")]
 zoom = Vector2(0.4, 0.4)
@@ -37,6 +41,19 @@ offset_bottom = 23.0
 script = ExtResource("4_74lek")
 metadata/_custom_type_script = "uid://b0cu5aqopu7qr"
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=732794801]
+position = Vector2(-410, 571)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=864744839]
+shape = SubResource("RectangleShape2D_j5jx5")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=1097429346]
+scale = Vector2(11.875, 9.5625)
+texture = SubResource("GradientTexture2D_lpvoh")
+
+[node name="CollideEffect" parent="StaticBody2D2" unique_id=1684433581 instance=ExtResource("5_j5jx5")]
+position = Vector2(-2996, 397)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1018393007]
 position = Vector2(59, -563)
 
@@ -46,6 +63,9 @@ shape = SubResource("RectangleShape2D_j5jx5")
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=970807906]
 scale = Vector2(11.875, 9.5625)
 texture = SubResource("GradientTexture2D_lpvoh")
+
+[node name="CollideEffect" parent="StaticBody2D" unique_id=2078960060 instance=ExtResource("5_j5jx5")]
+position = Vector2(-2996, 397)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=243650465]
 offset_right = 40.0

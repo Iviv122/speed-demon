@@ -8,27 +8,22 @@
 [ext_resource type="Texture2D" uid="uid://bd7gash8wxtyo" path="res://raw_assets/sprites/arrow.png" id="5_nsdob"]
 [ext_resource type="Shader" uid="uid://da3yqgdmhuxu1" path="res://shaders/textureshift.gdshader" id="5_yceh7"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bl13t"]
-radius = 63.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uovkd"]
 shader = ExtResource("5_yceh7")
 shader_parameter/x_speed = -15.0
 shader_parameter/y_speed = 0.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bl13t"]
+radius = 63.0
+
 [node name="Player" type="CharacterBody2D" unique_id=660741308]
 script = ExtResource("1_insbl")
-speed = 1000.0
+speed = 1500.0
 collide_effect = ExtResource("2_yceh7")
+cam_zoom = Vector2(0.4, 0.4)
+speed_cam_zoom = Vector2(0.35, 0.35)
+zoom_speed = 0.2
 metadata/_custom_type_script = "uid://c722fksxqbexu"
-
-[node name="Trail" parent="." unique_id=379838340 instance=ExtResource("2_rug40")]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=398371795]
-texture = ExtResource("3_mxi64")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=955774077]
-shape = SubResource("CircleShape2D_bl13t")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=453872024 node_paths=PackedStringArray("player")]
 texture_filter = 1
@@ -41,3 +36,11 @@ texture_mode = 1
 script = ExtResource("5_mxi64")
 player = NodePath("..")
 metadata/_custom_type_script = "uid://di133u80lqh3"
+
+[node name="Trail" parent="." unique_id=379838340 instance=ExtResource("2_rug40")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=398371795]
+texture = ExtResource("3_mxi64")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=955774077]
+shape = SubResource("CircleShape2D_bl13t")
