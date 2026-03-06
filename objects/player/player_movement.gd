@@ -4,13 +4,14 @@ class_name CharacterMovement
 @export var speed : float = 450 
 @export var player_radius : float = 63
 
+
 signal died()
+
+signal start()
+signal ended()
 
 var direction : Vector2 = Vector2(0,0)
 var pressed : bool = false
-
-
-var line : Line2D
 
 func _ready():
 	Engine.time_scale = 1
@@ -18,27 +19,28 @@ func _ready():
 func _input(event):
 
 	if event.is_action_pressed('m1') && !pressed:
-		start_slowmo()
 		pressed = true
+		turn_on()	
 
 	if event.is_action_released("m1") && pressed:
 		redirect()
+		turn_off()
 		pressed = false
-		end_slowmo()
 
 
 func redirect() -> void:
 	direction = (get_global_mouse_position() - global_position).normalized()
 
-func start_slowmo() -> void:
+func die() -> void:
+	died.emit()
+
+func turn_on() -> void:
+	start.emit()
 	Engine.time_scale = 0.3
 
-func end_slowmo() -> void:
+func turn_off() -> void:
+	ended.emit()
 	Engine.time_scale = 1
-
-func die() -> void:
-	end_slowmo()
-	died.emit()
 
 func is_collide() -> void:
 	var space_state = get_world_2d().direct_space_state
@@ -78,6 +80,8 @@ func _physics_process(_delta: float) -> void:
 
 	if direction == Vector2.ZERO:
 		return
+
+
 
 	is_collide()
 	velocity = direction*speed
