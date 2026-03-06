@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c722fksxqbexu" path="res://objects/player/player_movement.gd" id="1_insbl"]
 [ext_resource type="PackedScene" uid="uid://dicbos1j4vw7u" path="res://assets/trail.tscn" id="2_rug40"]
+[ext_resource type="PackedScene" uid="uid://c4iesjw2jgk87" path="res://assets/collide_effect.tscn" id="2_yceh7"]
 [ext_resource type="Texture2D" uid="uid://c50uacpqly58m" path="res://raw_assets/sprites/character.png" id="3_mxi64"]
 [ext_resource type="Script" uid="uid://di133u80lqh3" path="res://objects/player/line_support.gd" id="5_mxi64"]
 [ext_resource type="Texture2D" uid="uid://bd7gash8wxtyo" path="res://raw_assets/sprites/arrow.png" id="5_nsdob"]
@@ -18,6 +19,7 @@ shader_parameter/y_speed = 0.0
 [node name="Player" type="CharacterBody2D" unique_id=660741308]
 script = ExtResource("1_insbl")
 speed = 1000.0
+collide_effect = ExtResource("2_yceh7")
 metadata/_custom_type_script = "uid://c722fksxqbexu"
 
 [node name="Trail" parent="." unique_id=379838340 instance=ExtResource("2_rug40")]

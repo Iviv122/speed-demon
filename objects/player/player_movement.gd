@@ -3,7 +3,7 @@ class_name CharacterMovement
 
 @export var speed : float = 450 
 @export var player_radius : float = 63
-
+@export var collide_effect : PackedScene
 
 signal died()
 
@@ -54,16 +54,19 @@ func is_collide() -> void:
 		global_position,
 		global_position + dir * ray_length 
 	)
+	query.exclude = [self]
 
 	var query_left = PhysicsRayQueryParameters2D.create(
 		global_position + perp * player_radius,
 		global_position + perp * player_radius + dir * ray_length
 	)
+	query_left.exclude = [self]
 
 	var query_right = PhysicsRayQueryParameters2D.create(
 		global_position - perp * player_radius,
 		global_position - perp * player_radius + dir * ray_length
 	)
+	query_right.exclude = [self]
 
 	var result = space_state.intersect_ray(query)
 	var result_left = space_state.intersect_ray(query_left)
@@ -71,10 +74,23 @@ func is_collide() -> void:
 
 	if result:
 		direction = direction.bounce(result.normal)
+		spawn_effect(result.position)
 	elif result_left:
 		direction = direction.bounce(result_left.normal)
+		spawn_effect(result_left.position)
 	elif result_right:
 		direction = direction.bounce(result_right.normal)
+		spawn_effect(result_right.position)
+
+
+func spawn_effect(pos : Vector2) -> void:
+	var ef : OneshotEffect =  collide_effect.instantiate()
+
+	ef.restart()
+	ef.global_position = pos
+
+	get_tree().current_scene.add_child(ef)
+
 
 func _physics_process(_delta: float) -> void:
 
