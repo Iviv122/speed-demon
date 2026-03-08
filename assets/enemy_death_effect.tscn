@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ev7vwtqq8go1"]
+
+[ext_resource type="Texture2D" uid="uid://7il3qvpbmu8n" path="res://raw_assets/sprites/particle.png" id="1_achmf"]
+[ext_resource type="Script" uid="uid://dx7nbk0ygdyu0" path="res://objects/visual/oneshot_effect.gd" id="2_88g6r"]
+
+[sub_resource type="Curve" id="Curve_88g6r"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6kt2h"]
+curve = SubResource("Curve_88g6r")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_achmf"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 361.78998
+initial_velocity_max = 442.43
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_6kt2h")
+
+[node name="EnemyDeathEffect" type="GPUParticles2D" unique_id=719047375]
+emitting = false
+texture = ExtResource("1_achmf")
+lifetime = 0.53
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_achmf")
+script = ExtResource("2_88g6r")
+metadata/_custom_type_script = "uid://dx7nbk0ygdyu0"

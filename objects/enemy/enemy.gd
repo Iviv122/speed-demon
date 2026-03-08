@@ -6,4 +6,10 @@ class_name Enemy
 
 
 func die() -> void:
+	var e : OneshotEffect = death_effect.instantiate()
+	e.global_position = global_position
+	e.restart()
+
+	get_tree().current_scene.add_child(e)
+
 	queue_free()
