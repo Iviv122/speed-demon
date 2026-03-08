@@ -14,11 +14,11 @@ curve = SubResource("Curve_88g6r")
 particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
 spread = 180.0
-initial_velocity_min = 361.78998
-initial_velocity_max = 442.43
+initial_velocity_min = 463.94
+initial_velocity_max = 544.58
 gravity = Vector3(0, 0, 0)
-scale_min = 2.0
-scale_max = 3.0
+scale_min = 4.0
+scale_max = 5.0
 scale_curve = SubResource("CurveTexture_6kt2h")
 
 [node name="EnemyDeathEffect" type="GPUParticles2D" unique_id=719047375]
