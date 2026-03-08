@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b66idctrc0ftx"]
+
+[ext_resource type="Script" uid="uid://coebsyeiyai6t" path="res://objects/ui/restarter.gd" id="1_b38ta"]
+[ext_resource type="Texture2D" uid="uid://vyawuil3i5ye" path="res://raw_assets/sprites/click_to_restart.png" id="2_1x4do"]
+[ext_resource type="Script" uid="uid://eo75ts8fcrfy" path="res://objects/visual/start_animated_sprite.gd" id="2_b38ta"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vf7w"]
+atlas = ExtResource("2_1x4do")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oyct"]
+atlas = ExtResource("2_1x4do")
+region = Rect2(1920, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4tau"]
+atlas = ExtResource("2_1x4do")
+region = Rect2(3840, 0, 1920, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4opx8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vf7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6oyct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4tau")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Restarter" type="Node2D" unique_id=1577024899]
+top_level = true
+script = ExtResource("1_b38ta")
+move_time = 0.5
+
+[node name="StartAnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=1401887607]
+sprite_frames = SubResource("SpriteFrames_4opx8")
+script = ExtResource("2_b38ta")
+metadata/_custom_type_script = "uid://eo75ts8fcrfy"

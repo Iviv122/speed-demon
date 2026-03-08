@@ -5,10 +5,12 @@
 
 [node name="AudioManager" type="Node" unique_id=857827541 node_paths=PackedStringArray("player_death_sound")]
 script = ExtResource("1_n8fe1")
-player_death_sound = NodePath("AudioStreamPlayer")
+player_death_sound = NodePath("GlassShattered")
 metadata/_custom_type_script = "uid://d4g053s2huddu"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1262610412]
+[node name="GlassShattered" type="AudioStreamPlayer" parent="." unique_id=1262610412]
 stream = ExtResource("2_7biak")
 volume_db = -0.654
 pitch_scale = 1.57
+
+[node name="BackGroundMusic" type="AudioStreamPlayer" parent="." unique_id=1336108165]

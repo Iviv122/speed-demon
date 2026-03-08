@@ -43,12 +43,14 @@ func redirect() -> void:
 	throw_maker.play()
 
 func die() -> void:
+
 	var e : OneshotEffect = death_effect.instantiate()
 	e.global_position = global_position
 	e.restart()
 	get_tree().current_scene.add_child(e)
 	AudioManagerInstance.player_death_sound.play()
 
+	turn_off()
 	queue_free()
 	died.emit()
 

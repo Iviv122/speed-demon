@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://c4iesjw2jgk87" path="res://assets/player/collide_effect.tscn" id="5_j5jx5"]
 [ext_resource type="Texture2D" uid="uid://7xnf8qmw05b7" path="res://raw_assets/sprites/square.png" id="5_lpvoh"]
 [ext_resource type="PackedScene" uid="uid://ev7vwtqq8go1" path="res://assets/enemies/enemy_death_effect.tscn" id="6_at5dv"]
-[ext_resource type="Script" uid="uid://dbcwxskbkp3s0" path="res://objects/map/player_killer.gd" id="8_jcd4p"]
+[ext_resource type="Texture2D" uid="uid://7il3qvpbmu8n" path="res://raw_assets/sprites/particle.png" id="10_ajshl"]
+[ext_resource type="PackedScene" uid="uid://b66idctrc0ftx" path="res://assets/ui/restarter.tscn" id="10_yk7ts"]
+[ext_resource type="Script" uid="uid://dbcwxskbkp3s0" path="res://objects/map/player_killer.gd" id="11_ghpyy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5jx5"]
 size = Vector2(760, 612)
@@ -37,10 +39,10 @@ radius = 114.00439
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpvoh"]
 size = Vector2(256, 256)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jcd4p"]
-size = Vector2(310, 254)
+[sub_resource type="CircleShape2D" id="CircleShape2D_uacia"]
+radius = 123.47064
 
-[node name="Node2D" type="Node2D" unique_id=2144967713]
+[node name="Node2D" type="Node2D" unique_id=950323934]
 
 [node name="floor" type="Sprite2D" parent="." unique_id=1488368883]
 texture_repeat = 2
@@ -122,10 +124,18 @@ texture = ExtResource("5_lpvoh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2" unique_id=537048152]
 shape = SubResource("RectangleShape2D_lpvoh")
 
-[node name="PlayerKiller" type="Area2D" parent="." unique_id=771601758]
-position = Vector2(770, -84)
-script = ExtResource("8_jcd4p")
+[node name="Restarter" parent="." unique_id=1577024899 node_paths=PackedStringArray("player") instance=ExtResource("10_yk7ts")]
+position = Vector2(24, -1985)
+player = NodePath("../Player")
+
+[node name="PlayerKiller" type="Area2D" parent="." unique_id=1474682604]
+position = Vector2(827, -128)
+script = ExtResource("11_ghpyy")
 metadata/_custom_type_script = "uid://dbcwxskbkp3s0"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKiller" unique_id=558344320]
-shape = SubResource("RectangleShape2D_jcd4p")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKiller" unique_id=2084690900]
+shape = SubResource("CircleShape2D_uacia")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerKiller" unique_id=237095140]
+scale = Vector2(9.65, 9.65)
+texture = ExtResource("10_ajshl")
