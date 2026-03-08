@@ -26,8 +26,6 @@ var t: Tween
 func _ready():
 	Engine.time_scale = 1
 
-	await get_tree().create_timer(1).timeout
-	die()
 
 func _input(event):
 	if event.is_action_pressed('m1') && !pressed:
