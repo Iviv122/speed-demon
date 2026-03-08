@@ -47,6 +47,7 @@ func die() -> void:
 	e.global_position = global_position
 	e.restart()
 	get_tree().current_scene.add_child(e)
+	AudioManagerInstance.player_death_sound.play()
 
 	queue_free()
 	died.emit()

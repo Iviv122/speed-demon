@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://drdc2v4ij8fqp"]
+
+[ext_resource type="Script" uid="uid://d4g053s2huddu" path="res://objects/sounds/AudioManager.gd" id="1_n8fe1"]
+[ext_resource type="AudioStream" uid="uid://clceo1uk8ub11" path="res://raw_assets/sounds/glass_shattered.mp3" id="2_7biak"]
+
+[node name="AudioManager" type="Node" unique_id=857827541 node_paths=PackedStringArray("player_death_sound")]
+script = ExtResource("1_n8fe1")
+player_death_sound = NodePath("AudioStreamPlayer")
+metadata/_custom_type_script = "uid://d4g053s2huddu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1262610412]
+stream = ExtResource("2_7biak")
+volume_db = -0.654
+pitch_scale = 1.57

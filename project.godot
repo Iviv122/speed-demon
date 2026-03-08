@@ -15,6 +15,10 @@ run/main_scene="uid://dw4snnhawdl8e"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+AudioManagerInstance="*uid://drdc2v4ij8fqp"
+
 [debug]
 
 settings/stdout/print_fps=true
