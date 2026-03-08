@@ -7,6 +7,7 @@ class_name CharacterMovement
 @export var camera: Camera2D
 @export var bump_maker: AudioStreamPlayer
 @export var throw_maker: AudioStreamPlayer
+@export var death_effect : PackedScene
 
 @export var cam_zoom: Vector2
 @export var speed_cam_zoom: Vector2
@@ -25,6 +26,9 @@ var t: Tween
 func _ready():
 	Engine.time_scale = 1
 
+	await get_tree().create_timer(1).timeout
+	die()
+
 func _input(event):
 	if event.is_action_pressed('m1') && !pressed:
 		pressed = true
@@ -41,6 +45,12 @@ func redirect() -> void:
 	throw_maker.play()
 
 func die() -> void:
+	var e : OneshotEffect = death_effect.instantiate()
+	e.global_position = global_position
+	e.restart()
+	get_tree().current_scene.add_child(e)
+
+	queue_free()
 	died.emit()
 
 func turn_on() -> void:

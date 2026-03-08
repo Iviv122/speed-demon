@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c722fksxqbexu" path="res://objects/player/player_movement.gd" id="1_insbl"]
 [ext_resource type="PackedScene" uid="uid://dicbos1j4vw7u" path="res://assets/player/trail.tscn" id="2_rug40"]
 [ext_resource type="PackedScene" uid="uid://c4iesjw2jgk87" path="res://assets/player/collide_effect.tscn" id="2_yceh7"]
+[ext_resource type="PackedScene" uid="uid://cedqfcr5yeeml" path="res://assets/player/player_death.tscn" id="3_m2mll"]
 [ext_resource type="Texture2D" uid="uid://c50uacpqly58m" path="res://raw_assets/sprites/character.png" id="3_mxi64"]
 [ext_resource type="Script" uid="uid://di133u80lqh3" path="res://objects/player/line_support.gd" id="5_mxi64"]
 [ext_resource type="Texture2D" uid="uid://bd7gash8wxtyo" path="res://raw_assets/sprites/arrow.png" id="5_nsdob"]
@@ -25,6 +26,7 @@ speed = 1500.0
 collide_effect = ExtResource("2_yceh7")
 bump_maker = NodePath("bump_sound")
 throw_maker = NodePath("throw_sound")
+death_effect = ExtResource("3_m2mll")
 cam_zoom = Vector2(0.4, 0.4)
 speed_cam_zoom = Vector2(0.35, 0.35)
 zoom_speed = 0.2
