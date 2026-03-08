@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dw4snnhawdl8e"]
 
-[ext_resource type="PackedScene" uid="uid://c1qrg67y0nrcu" path="res://assets/player.tscn" id="2_74lek"]
+[ext_resource type="PackedScene" uid="uid://c1qrg67y0nrcu" path="res://assets/player/player.tscn" id="2_74lek"]
 [ext_resource type="Texture2D" uid="uid://b4il8cwkkmdf6" path="res://raw_assets/sprites/tilefloor.png" id="2_bl13t"]
 [ext_resource type="Script" uid="uid://wkuhl2e5xc" path="res://objects/camera/cam_follow.gd" id="4_j5jx5"]
 [ext_resource type="Script" uid="uid://byubysdv4evlm" path="res://objects/enemy/enemy.gd" id="5_at5dv"]
-[ext_resource type="PackedScene" uid="uid://c4iesjw2jgk87" path="res://assets/collide_effect.tscn" id="5_j5jx5"]
+[ext_resource type="PackedScene" uid="uid://c4iesjw2jgk87" path="res://assets/player/collide_effect.tscn" id="5_j5jx5"]
 [ext_resource type="Texture2D" uid="uid://7xnf8qmw05b7" path="res://raw_assets/sprites/square.png" id="5_lpvoh"]
-[ext_resource type="PackedScene" uid="uid://ev7vwtqq8go1" path="res://assets/enemy_death_effect.tscn" id="6_at5dv"]
+[ext_resource type="PackedScene" uid="uid://ev7vwtqq8go1" path="res://assets/enemies/enemy_death_effect.tscn" id="6_at5dv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5jx5"]
 size = Vector2(760, 612)

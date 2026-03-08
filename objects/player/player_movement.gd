@@ -6,6 +6,7 @@ class_name CharacterMovement
 @export var collide_effect: PackedScene
 @export var camera: Camera2D
 @export var bump_maker: AudioStreamPlayer
+@export var throw_maker: AudioStreamPlayer
 
 @export var cam_zoom: Vector2
 @export var speed_cam_zoom: Vector2
@@ -37,6 +38,7 @@ func _input(event):
 
 func redirect() -> void:
 	direction = (get_global_mouse_position() - global_position).normalized()
+	throw_maker.play()
 
 func die() -> void:
 	died.emit()

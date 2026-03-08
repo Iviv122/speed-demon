@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://c1qrg67y0nrcu"]
 
 [ext_resource type="Script" uid="uid://c722fksxqbexu" path="res://objects/player/player_movement.gd" id="1_insbl"]
-[ext_resource type="PackedScene" uid="uid://dicbos1j4vw7u" path="res://assets/trail.tscn" id="2_rug40"]
-[ext_resource type="PackedScene" uid="uid://c4iesjw2jgk87" path="res://assets/collide_effect.tscn" id="2_yceh7"]
+[ext_resource type="PackedScene" uid="uid://dicbos1j4vw7u" path="res://assets/player/trail.tscn" id="2_rug40"]
+[ext_resource type="PackedScene" uid="uid://c4iesjw2jgk87" path="res://assets/player/collide_effect.tscn" id="2_yceh7"]
 [ext_resource type="Texture2D" uid="uid://c50uacpqly58m" path="res://raw_assets/sprites/character.png" id="3_mxi64"]
 [ext_resource type="Script" uid="uid://di133u80lqh3" path="res://objects/player/line_support.gd" id="5_mxi64"]
 [ext_resource type="Texture2D" uid="uid://bd7gash8wxtyo" path="res://raw_assets/sprites/arrow.png" id="5_nsdob"]
 [ext_resource type="Shader" uid="uid://da3yqgdmhuxu1" path="res://shaders/textureshift.gdshader" id="5_yceh7"]
 [ext_resource type="AudioStream" uid="uid://cy4uki1s0ixab" path="res://raw_assets/sounds/explosion_dull.wav" id="8_uovkd"]
+[ext_resource type="AudioStream" uid="uid://b8kjq6p1dv48c" path="res://raw_assets/sounds/sfx_throw.wav" id="9_op4fd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uovkd"]
 shader = ExtResource("5_yceh7")
@@ -17,12 +18,13 @@ shader_parameter/y_speed = 0.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_bl13t"]
 radius = 63.0
 
-[node name="Player" type="CharacterBody2D" unique_id=660741308 node_paths=PackedStringArray("bump_maker")]
+[node name="Player" type="CharacterBody2D" unique_id=660741308 node_paths=PackedStringArray("bump_maker", "throw_maker")]
 floor_max_angle = 0.0
 script = ExtResource("1_insbl")
 speed = 1500.0
 collide_effect = ExtResource("2_yceh7")
 bump_maker = NodePath("bump_sound")
+throw_maker = NodePath("throw_sound")
 cam_zoom = Vector2(0.4, 0.4)
 speed_cam_zoom = Vector2(0.35, 0.35)
 zoom_speed = 0.2
@@ -52,3 +54,8 @@ shape = SubResource("CircleShape2D_bl13t")
 stream = ExtResource("8_uovkd")
 volume_db = -4.855
 pitch_scale = 0.67
+
+[node name="throw_sound" type="AudioStreamPlayer" parent="." unique_id=1958608458]
+stream = ExtResource("9_op4fd")
+volume_db = -4.579
+pitch_scale = 1.93
