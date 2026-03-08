@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c4iesjw2jgk87" path="res://assets/player/collide_effect.tscn" id="5_j5jx5"]
 [ext_resource type="Texture2D" uid="uid://7xnf8qmw05b7" path="res://raw_assets/sprites/square.png" id="5_lpvoh"]
 [ext_resource type="PackedScene" uid="uid://ev7vwtqq8go1" path="res://assets/enemies/enemy_death_effect.tscn" id="6_at5dv"]
+[ext_resource type="Script" uid="uid://dbcwxskbkp3s0" path="res://objects/map/player_killer.gd" id="8_jcd4p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5jx5"]
 size = Vector2(760, 612)
@@ -35,6 +36,9 @@ radius = 114.00439
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpvoh"]
 size = Vector2(256, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jcd4p"]
+size = Vector2(310, 254)
 
 [node name="Node2D" type="Node2D" unique_id=2144967713]
 
@@ -117,3 +121,11 @@ texture = ExtResource("5_lpvoh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2" unique_id=537048152]
 shape = SubResource("RectangleShape2D_lpvoh")
+
+[node name="PlayerKiller" type="Area2D" parent="." unique_id=771601758]
+position = Vector2(770, -84)
+script = ExtResource("8_jcd4p")
+metadata/_custom_type_script = "uid://dbcwxskbkp3s0"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKiller" unique_id=558344320]
+shape = SubResource("RectangleShape2D_jcd4p")
