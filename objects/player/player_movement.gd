@@ -113,13 +113,13 @@ func is_collide() -> void:
 		bounce(result_right.normal,result_right.collider,result_right.position)
 
 func bounce(normal: Vector2,collider: Node2D, pos : Vector2) -> void:
-	direction = direction.bounce(normal)
 
+	direction = direction.bounce(normal)
 	if collider is Enemy:
 		collider.die()
-
-	bump_maker.play()
-	spawn_effect(pos)
+	else:
+		bump_maker.play()
+		spawn_effect(pos)
 
 func spawn_effect(pos: Vector2) -> void:
 	var ef: OneshotEffect = collide_effect.instantiate()

@@ -11,5 +11,5 @@ func die() -> void:
 	e.restart()
 
 	get_tree().current_scene.add_child(e)
-
+	AudioManagerInstance.enemy_death_sound.play()
 	queue_free()

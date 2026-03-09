@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://d4g053s2huddu" path="res://objects/sounds/AudioManager.gd" id="1_n8fe1"]
 [ext_resource type="AudioStream" uid="uid://clceo1uk8ub11" path="res://raw_assets/sounds/glass_shattered.mp3" id="2_7biak"]
+[ext_resource type="AudioStream" uid="uid://da74y7isdohgl" path="res://raw_assets/sounds/kill_sound.ogg" id="3_vlgya"]
 
-[node name="AudioManager" type="Node" unique_id=857827541 node_paths=PackedStringArray("player_death_sound")]
+[node name="AudioManager" type="Node" unique_id=857827541 node_paths=PackedStringArray("player_death_sound", "enemy_death_sound")]
 script = ExtResource("1_n8fe1")
 player_death_sound = NodePath("GlassShattered")
+enemy_death_sound = NodePath("EnemyDeathSound")
 metadata/_custom_type_script = "uid://d4g053s2huddu"
 
 [node name="GlassShattered" type="AudioStreamPlayer" parent="." unique_id=1262610412]
@@ -14,3 +16,8 @@ volume_db = -0.654
 pitch_scale = 1.57
 
 [node name="BackGroundMusic" type="AudioStreamPlayer" parent="." unique_id=1336108165]
+
+[node name="EnemyDeathSound" type="AudioStreamPlayer" parent="." unique_id=796302435]
+stream = ExtResource("3_vlgya")
+volume_db = -4.579
+pitch_scale = 1.65
