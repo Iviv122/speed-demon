@@ -1,7 +1,46 @@
 [gd_scene format=3 uid="uid://cucnqmqi3wcve"]
 
 [ext_resource type="Script" uid="uid://bfioh23pa4r3a" path="res://objects/ui/click_to_start.gd" id="1_ioskq"]
+[ext_resource type="Texture2D" uid="uid://byd8bs73l3o8v" path="res://raw_assets/sprites/click_to_strat.png" id="2_4bx60"]
+[ext_resource type="Script" uid="uid://eo75ts8fcrfy" path="res://objects/visual/start_animated_sprite.gd" id="2_yjqpq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2l1n"]
+atlas = ExtResource("2_4bx60")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfs7u"]
+atlas = ExtResource("2_4bx60")
+region = Rect2(1920, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es01l"]
+atlas = ExtResource("2_4bx60")
+region = Rect2(3840, 0, 1920, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0naf5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2l1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfs7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_es01l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Intro" type="Node2D" unique_id=1049815201]
 script = ExtResource("1_ioskq")
 scene = "res://scenes/levels/level1.tscn"
+
+[node name="StartAnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=456372046]
+sprite_frames = SubResource("SpriteFrames_0naf5")
+script = ExtResource("2_yjqpq")
+metadata/_custom_type_script = "uid://eo75ts8fcrfy"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1943224922]
+zoom = Vector2(0.605, 0.605)

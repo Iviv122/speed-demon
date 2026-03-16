@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cckdtr1gbejh0"]
+
+[ext_resource type="Script" uid="uid://eo75ts8fcrfy" path="res://objects/visual/start_animated_sprite.gd" id="1_6fp3h"]
+[ext_resource type="Texture2D" uid="uid://khkgw8fdg0j0" path="res://raw_assets/sprites/cup.png" id="1_obla8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3xpl"]
+atlas = ExtResource("1_obla8")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgnvb"]
+atlas = ExtResource("1_obla8")
+region = Rect2(1920, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5rnv"]
+atlas = ExtResource("1_obla8")
+region = Rect2(3840, 0, 1920, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_obla8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3xpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgnvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5rnv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="WinScreen" type="Node2D" unique_id=363457986]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1427760953]
+zoom = Vector2(0.545, 0.545)
+
+[node name="StartAnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=461656383]
+sprite_frames = SubResource("SpriteFrames_obla8")
+script = ExtResource("1_6fp3h")
+metadata/_custom_type_script = "uid://eo75ts8fcrfy"
