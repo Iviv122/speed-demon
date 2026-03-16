@@ -3,7 +3,11 @@ class_name Enemy
 
 @export var death_effect : PackedScene
 
+func _ready() -> void:
+	on_ready()
 
+func on_ready() -> void:
+	pass
 
 func die() -> void:
 	var e : OneshotEffect = death_effect.instantiate()

@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://xusa4juxctyc" path="res://assets/player/camera_2d.tscn" id="5_dywbp"]
 [ext_resource type="PackedScene" uid="uid://b66idctrc0ftx" path="res://assets/ui/restarter.tscn" id="6_1seuy"]
 [ext_resource type="PackedScene" uid="uid://c303djpk2xaup" path="res://assets/map/exit_portal.tscn" id="7_2r1tl"]
+[ext_resource type="PackedScene" uid="uid://cng483h8pmfyh" path="res://assets/enemies/bullet.tscn" id="8_8a7m2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bfxgj"]
 texture = ExtResource("3_dd0lh")
@@ -57,3 +58,7 @@ player = NodePath("../Player")
 
 [node name="ExitPortal" parent="." unique_id=2141940923 instance=ExtResource("7_2r1tl")]
 position = Vector2(1976, -292)
+scene_to_load = "res://scenes/levels/level2.tscn"
+
+[node name="Bullet" parent="." unique_id=122870934 instance=ExtResource("8_8a7m2")]
+position = Vector2(-451, -100)

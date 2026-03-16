@@ -1,0 +1,68 @@
+[gd_scene format=4 uid="uid://c5u52gs4s1od3"]
+
+[ext_resource type="PackedScene" uid="uid://c4iesjw2jgk87" path="res://assets/player/collide_effect.tscn" id="1_f7rt6"]
+[ext_resource type="Texture2D" uid="uid://b4il8cwkkmdf6" path="res://raw_assets/sprites/tilefloor.png" id="2_8w0pe"]
+[ext_resource type="Texture2D" uid="uid://7xnf8qmw05b7" path="res://raw_assets/sprites/square.png" id="3_7eb4w"]
+[ext_resource type="PackedScene" uid="uid://c1qrg67y0nrcu" path="res://assets/player/player.tscn" id="4_hadiw"]
+[ext_resource type="PackedScene" uid="uid://xusa4juxctyc" path="res://assets/player/camera_2d.tscn" id="5_72x3h"]
+[ext_resource type="PackedScene" uid="uid://b66idctrc0ftx" path="res://assets/ui/restarter.tscn" id="6_wb0vq"]
+[ext_resource type="PackedScene" uid="uid://c303djpk2xaup" path="res://assets/map/exit_portal.tscn" id="7_ah4rv"]
+[ext_resource type="PackedScene" uid="uid://c24wxqg2xll45" path="res://assets/enemies/simple_enemy.tscn" id="8_8w0pe"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dd0lh"]
+texture = ExtResource("2_8w0pe")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_bfxgj"]
+tile_size = Vector2i(256, 256)
+sources/0 = SubResource("TileSetAtlasSource_dd0lh")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bfxgj"]
+texture = ExtResource("3_7eb4w")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+
+[sub_resource type="TileSet" id="TileSet_dywbp"]
+tile_size = Vector2i(256, 256)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_bfxgj")
+
+[node name="Level1" type="Node2D" unique_id=400181496]
+
+[node name="CollideEffect" parent="." unique_id=1684433581 instance=ExtResource("1_f7rt6")]
+position = Vector2(-4638, -675)
+
+[node name="floor2" type="TileMapLayer" parent="." unique_id=1003932788]
+tile_map_data = PackedByteArray("AAD9//3/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD///3/AAAAAAAAAAD///7/AAAAAAAAAAD/////AAAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAABAP3/AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAACAP3/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAADAP3/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAAEAP3/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAAFAP3/AAAAAAAAAAAFAP7/AAAAAAAAAAAFAP//AAAAAAAAAAAGAP3/AAAAAAAAAAAGAP7/AAAAAAAAAAAGAP//AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAIAP3/AAAAAAAAAAAIAP7/AAAAAAAAAAAIAP//AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_bfxgj")
+
+[node name="walls" type="TileMapLayer" parent="." unique_id=1302027713]
+self_modulate = Color(0.18431373, 0.18431373, 0.18431373, 1)
+tile_map_data = PackedByteArray("AAD8//z/AAAAAAAAAAD8//3/AAAAAAAAAAD8//7/AAAAAAAAAAD8////AAAAAAAAAAD9//z/AAAAAAAAAAD+//z/AAAAAAAAAAD///z/AAAAAAAAAAAAAPz/AAAAAAAAAAABAPz/AAAAAAAAAAACAPz/AAAAAAAAAAADAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPz/AAAAAAAAAAAGAPz/AAAAAAAAAAAHAPz/AAAAAAAAAAAIAPz/AAAAAAAAAAAJAPz/AAAAAAAAAAAJAP3/AAAAAAAAAAAJAP7/AAAAAAAAAAAJAP//AAAAAAAAAAAJAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_dywbp")
+use_kinematic_bodies = true
+
+[node name="Player" parent="." unique_id=660741308 node_paths=PackedStringArray("camera") instance=ExtResource("4_hadiw")]
+position = Vector2(-512, -255)
+camera = NodePath("../Camera2D")
+
+[node name="Camera2D" parent="." unique_id=1928307590 node_paths=PackedStringArray("target") instance=ExtResource("5_72x3h")]
+position = Vector2(-497, -246)
+target = NodePath("../Player")
+
+[node name="Restarter" parent="." unique_id=1577024899 node_paths=PackedStringArray("player") instance=ExtResource("6_wb0vq")]
+position = Vector2(24, -1985)
+player = NodePath("../Player")
+
+[node name="ExitPortal" parent="." unique_id=2141940923 instance=ExtResource("7_ah4rv")]
+position = Vector2(1976, -292)
+
+[node name="SimpleEnemy" parent="." unique_id=304801869 instance=ExtResource("8_8w0pe")]
+position = Vector2(274, -385.00003)
+scale = Vector2(1.5, 1.5)
+
+[node name="SimpleEnemy2" parent="." unique_id=2075990540 instance=ExtResource("8_8w0pe")]
+position = Vector2(1283, -385.00003)
+scale = Vector2(1.5, 1.5)

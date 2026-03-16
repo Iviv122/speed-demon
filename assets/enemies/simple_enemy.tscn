@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c24wxqg2xll45"]
+
+[ext_resource type="Script" uid="uid://byubysdv4evlm" path="res://objects/enemy/enemy.gd" id="1_jtnh2"]
+[ext_resource type="PackedScene" uid="uid://ev7vwtqq8go1" path="res://assets/enemies/enemy_death_effect.tscn" id="2_vt15x"]
+[ext_resource type="Texture2D" uid="uid://bbte82igoowgi" path="res://raw_assets/sprites/enemy1.png" id="2_wrcru"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vt15x"]
+size = Vector2(512, 512)
+
+[node name="SimpleEnemy" type="StaticBody2D" unique_id=304801869]
+script = ExtResource("1_jtnh2")
+death_effect = ExtResource("2_vt15x")
+metadata/_custom_type_script = "uid://byubysdv4evlm"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1597871300]
+texture = ExtResource("2_wrcru")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1100503257]
+shape = SubResource("RectangleShape2D_vt15x")

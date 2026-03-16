@@ -7,11 +7,13 @@ class_name CharacterMovement
 @export var camera: Camera2D
 @export var bump_maker: AudioStreamPlayer
 @export var throw_maker: AudioStreamPlayer
-@export var death_effect : PackedScene
+@export var death_effect: PackedScene
 
 @export var cam_zoom: Vector2
 @export var speed_cam_zoom: Vector2
 @export var zoom_speed: float = 0.4
+
+var can_die: bool = true
 
 signal died()
 
@@ -43,16 +45,16 @@ func redirect() -> void:
 	throw_maker.play()
 
 func die() -> void:
+	if can_die:
+		var e: OneshotEffect = death_effect.instantiate()
+		e.global_position = global_position
+		e.restart()
+		get_tree().current_scene.add_child(e)
+		AudioManagerInstance.player_death_sound.play()
 
-	var e : OneshotEffect = death_effect.instantiate()
-	e.global_position = global_position
-	e.restart()
-	get_tree().current_scene.add_child(e)
-	AudioManagerInstance.player_death_sound.play()
-
-	turn_off()
-	queue_free()
-	died.emit()
+		turn_off()
+		queue_free()
+		died.emit()
 
 func turn_on() -> void:
 	if t:
@@ -106,14 +108,13 @@ func is_collide() -> void:
 	var result_right = space_state.intersect_ray(query_right)
 
 	if result:
-		bounce(result.normal,result.collider,result.position)
+		bounce(result.normal, result.collider, result.position)
 	elif result_left:
-		bounce(result_left.normal,result_left.collider,result_left.position)
+		bounce(result_left.normal, result_left.collider, result_left.position)
 	elif result_right:
-		bounce(result_right.normal,result_right.collider,result_right.position)
+		bounce(result_right.normal, result_right.collider, result_right.position)
 
-func bounce(normal: Vector2,collider: Node2D, pos : Vector2) -> void:
-
+func bounce(normal: Vector2, collider: Node2D, pos: Vector2) -> void:
 	direction = direction.bounce(normal)
 	if collider is Enemy:
 		collider.die()
