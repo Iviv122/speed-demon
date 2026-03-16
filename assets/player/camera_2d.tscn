@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://xusa4juxctyc"]
+
+[ext_resource type="Script" uid="uid://wkuhl2e5xc" path="res://objects/camera/cam_follow.gd" id="1_4d5c0"]
+
+[node name="Camera2D" type="Camera2D" unique_id=1928307590]
+zoom = Vector2(0.4, 0.4)
+position_smoothing_enabled = true
+script = ExtResource("1_4d5c0")
+metadata/_custom_type_script = "uid://wkuhl2e5xc"

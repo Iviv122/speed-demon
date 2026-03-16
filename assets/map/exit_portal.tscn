@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://c303djpk2xaup"]
+
+[ext_resource type="Script" uid="uid://bbxft2v1jytdf" path="res://objects/map/exit.gd" id="1_7tpdj"]
+[ext_resource type="PackedScene" uid="uid://bjj2p432kdbcn" path="res://assets/general_effects/level_end.tscn" id="2_mjiow"]
+[ext_resource type="Texture2D" uid="uid://byd8bs73l3o8v" path="res://raw_assets/sprites/Sprite-0001-Sheet.png" id="3_mjiow"]
+[ext_resource type="Script" uid="uid://eo75ts8fcrfy" path="res://objects/visual/start_animated_sprite.gd" id="4_mjiow"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8a7m2"]
+radius = 169.51697
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22iam"]
+atlas = ExtResource("3_mjiow")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76it7"]
+atlas = ExtResource("3_mjiow")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwp3a"]
+atlas = ExtResource("3_mjiow")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kx7el"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22iam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76it7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwp3a")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="ExitPortal" type="Area2D" unique_id=2141940923]
+script = ExtResource("1_7tpdj")
+exit_effect = ExtResource("2_mjiow")
+metadata/_custom_type_script = "uid://bbxft2v1jytdf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=698090729]
+shape = SubResource("CircleShape2D_8a7m2")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=376239524]
+scale = Vector2(2.5703526, 2.5303915)
+sprite_frames = SubResource("SpriteFrames_kx7el")
+animation = &"new_animation"
+frame_progress = 0.95512486
+script = ExtResource("4_mjiow")
