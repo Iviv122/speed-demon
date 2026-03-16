@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c50uacpqly58m" path="res://raw_assets/sprites/character.png" id="3_mxi64"]
 [ext_resource type="Script" uid="uid://di133u80lqh3" path="res://objects/player/line_support.gd" id="5_mxi64"]
 [ext_resource type="Texture2D" uid="uid://bd7gash8wxtyo" path="res://raw_assets/sprites/arrow.png" id="5_nsdob"]
-[ext_resource type="Shader" uid="uid://da3yqgdmhuxu1" path="res://shaders/textureshift.gdshader" id="5_yceh7"]
+[ext_resource type="Shader" uid="uid://bcb48tcwxlrtv" path="res://shaders/textureshift.gdshader" id="5_yceh7"]
 [ext_resource type="AudioStream" uid="uid://cy4uki1s0ixab" path="res://raw_assets/sounds/explosion_dull.wav" id="8_uovkd"]
 [ext_resource type="AudioStream" uid="uid://b8kjq6p1dv48c" path="res://raw_assets/sounds/sfx_throw.wav" id="9_op4fd"]
 
@@ -17,7 +17,7 @@ shader_parameter/x_speed = -15.0
 shader_parameter/y_speed = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bl13t"]
-radius = 63.0
+radius = 62.0
 
 [node name="Player" type="CharacterBody2D" unique_id=660741308 node_paths=PackedStringArray("bump_maker", "throw_maker")]
 floor_max_angle = 0.0

@@ -58,6 +58,7 @@ player = NodePath("../Player")
 
 [node name="ExitPortal" parent="." unique_id=2141940923 instance=ExtResource("7_ah4rv")]
 position = Vector2(1976, -292)
+scene_to_load = "res://scenes/levels/level4.tscn"
 
 [node name="SimpleEnemy" parent="." unique_id=304801869 instance=ExtResource("8_8w0pe")]
 position = Vector2(274, -385.00003)

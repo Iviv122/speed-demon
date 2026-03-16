@@ -10,6 +10,10 @@ func _ready():
 func die(body: Node2D):
 	if body is CharacterMovement:
 		body.die()
+
+	if body is Enemy || body is Bullet:
+		return
+
 	queue_free()
 
 func _process(delta: float) -> void:

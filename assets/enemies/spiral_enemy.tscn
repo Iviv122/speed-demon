@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c7y7l64uhu7i5"]
+
+[ext_resource type="Script" uid="uid://bl7es4kvqe72f" path="res://objects/enemy/sprital_shoot.gd" id="1_nhe0c"]
+[ext_resource type="PackedScene" uid="uid://cng483h8pmfyh" path="res://assets/enemies/bullet.tscn" id="2_eei2k"]
+[ext_resource type="PackedScene" uid="uid://ev7vwtqq8go1" path="res://assets/enemies/enemy_death_effect.tscn" id="3_a8p0h"]
+[ext_resource type="Texture2D" uid="uid://dw57o8bxrxwxh" path="res://raw_assets/sprites/enemy.png" id="4_nhe0c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhe0c"]
+size = Vector2(256, 256)
+
+[node name="SimpleEnemy" type="StaticBody2D" unique_id=1379365459]
+script = ExtResource("1_nhe0c")
+shoot_time = 0.1
+bullet = ExtResource("2_eei2k")
+rot = 5.0
+death_effect = ExtResource("3_a8p0h")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1597871300]
+texture = ExtResource("4_nhe0c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1298634113]
+shape = SubResource("RectangleShape2D_nhe0c")

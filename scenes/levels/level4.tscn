@@ -1,0 +1,85 @@
+[gd_scene format=4 uid="uid://77huauv1a1ce"]
+
+[ext_resource type="PackedScene" uid="uid://c4iesjw2jgk87" path="res://assets/player/collide_effect.tscn" id="1_s45gt"]
+[ext_resource type="Texture2D" uid="uid://b4il8cwkkmdf6" path="res://raw_assets/sprites/tilefloor.png" id="2_4vryo"]
+[ext_resource type="Texture2D" uid="uid://7xnf8qmw05b7" path="res://raw_assets/sprites/square.png" id="3_g1ckg"]
+[ext_resource type="PackedScene" uid="uid://c1qrg67y0nrcu" path="res://assets/player/player.tscn" id="4_t7v7a"]
+[ext_resource type="PackedScene" uid="uid://xusa4juxctyc" path="res://assets/player/camera_2d.tscn" id="5_xx6b8"]
+[ext_resource type="PackedScene" uid="uid://b66idctrc0ftx" path="res://assets/ui/restarter.tscn" id="6_f62st"]
+[ext_resource type="PackedScene" uid="uid://c303djpk2xaup" path="res://assets/map/exit_portal.tscn" id="7_w24lh"]
+[ext_resource type="PackedScene" uid="uid://dd5vm1wk7nw1" path="res://assets/enemies/cross_enemy.tscn" id="8_s45gt"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dd0lh"]
+texture = ExtResource("2_4vryo")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_bfxgj"]
+tile_size = Vector2i(256, 256)
+sources/0 = SubResource("TileSetAtlasSource_dd0lh")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bfxgj"]
+texture = ExtResource("3_g1ckg")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+
+[sub_resource type="TileSet" id="TileSet_dywbp"]
+tile_size = Vector2i(256, 256)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_bfxgj")
+
+[node name="Level1" type="Node2D" unique_id=400181496]
+
+[node name="CollideEffect" parent="." unique_id=1684433581 instance=ExtResource("1_s45gt")]
+position = Vector2(-4638, -675)
+
+[node name="floor2" type="TileMapLayer" parent="." unique_id=1003932788]
+tile_map_data = PackedByteArray("AAD9//3/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD///3/AAAAAAAAAAD///7/AAAAAAAAAAD/////AAAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAABAP3/AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAACAP3/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAADAP3/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAAEAP3/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAAFAP3/AAAAAAAAAAAFAP7/AAAAAAAAAAAFAP//AAAAAAAAAAAGAP3/AAAAAAAAAAAGAP7/AAAAAAAAAAAGAP//AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAIAP3/AAAAAAAAAAAIAP7/AAAAAAAAAAAIAP//AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAAAAAAAAAD9/wMAAAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAD//wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD9/wUAAAAAAAAAAAD+/wUAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAD+/wYAAAAAAAAAAAD9/wYAAAAAAAAAAAD//wYAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_bfxgj")
+
+[node name="walls" type="TileMapLayer" parent="." unique_id=1302027713]
+self_modulate = Color(0.18431373, 0.18431373, 0.18431373, 1)
+tile_map_data = PackedByteArray("AAD9//3/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAAAAAAAAAD9/wMAAAAAAAAAAAD9/wQAAAAAAAAAAAD+//3/AAAAAAAAAAD///3/AAAAAAAAAAAAAP3/AAAAAAAAAAABAP3/AAAAAAAAAAACAP3/AAAAAAAAAAADAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAAFAP3/AAAAAAAAAAAGAP3/AAAAAAAAAAAHAP3/AAAAAAAAAAAIAP3/AAAAAAAAAAAIAP7/AAAAAAAAAAAIAP//AAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAACAAIAAAAAAAAAAAD9/wUAAAAAAAAAAAD9/wYAAAAAAAAAAAD+/wYAAAAAAAAAAAD//wYAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAUAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_dywbp")
+use_kinematic_bodies = true
+
+[node name="Player" parent="." unique_id=660741308 node_paths=PackedStringArray("camera") instance=ExtResource("4_t7v7a")]
+position = Vector2(-387, 511)
+camera = NodePath("../Camera2D")
+
+[node name="Camera2D" parent="." unique_id=1928307590 node_paths=PackedStringArray("target") instance=ExtResource("5_xx6b8")]
+position = Vector2(-497, -246)
+target = NodePath("../Player")
+
+[node name="Restarter" parent="." unique_id=1577024899 node_paths=PackedStringArray("player") instance=ExtResource("6_f62st")]
+position = Vector2(24, -1985)
+player = NodePath("../Player")
+
+[node name="ExitPortal" parent="." unique_id=2141940923 instance=ExtResource("7_w24lh")]
+position = Vector2(1793, 513)
+scene_to_load = "res://scenes/levels/level5.tscn"
+
+[node name="SimpleEnemy" parent="." unique_id=1716189816 instance=ExtResource("8_s45gt")]
+position = Vector2(389, 121)
+
+[node name="SimpleEnemy2" parent="." unique_id=1664774773 instance=ExtResource("8_s45gt")]
+position = Vector2(1151, 127)
+
+[node name="SimpleEnemy3" parent="." unique_id=2141863630 instance=ExtResource("8_s45gt")]
+position = Vector2(384, 899)
+
+[node name="SimpleEnemy4" parent="." unique_id=1232725950 instance=ExtResource("8_s45gt")]
+position = Vector2(1153, 895)
+
+[node name="SimpleEnemy5" parent="." unique_id=1567329474 instance=ExtResource("8_s45gt")]
+position = Vector2(-251, -256)
+
+[node name="SimpleEnemy6" parent="." unique_id=684203389 instance=ExtResource("8_s45gt")]
+position = Vector2(-251, 1279)
+
+[node name="SimpleEnemy7" parent="." unique_id=2047338531 instance=ExtResource("8_s45gt")]
+position = Vector2(1793, -256)
+
+[node name="SimpleEnemy8" parent="." unique_id=412987758 instance=ExtResource("8_s45gt")]
+position = Vector2(1793, 1283)
