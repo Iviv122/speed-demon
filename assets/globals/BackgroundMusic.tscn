@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b8qwdggy7tf2"]
+
+[ext_resource type="AudioStream" uid="uid://dqwiqv174s2yv" path="res://raw_assets/music/techtheist-exdnbd-224289.mp3" id="1_qsa4o"]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" unique_id=213146242]
+stream = ExtResource("1_qsa4o")
+autoplay = true
